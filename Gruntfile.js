@@ -49,7 +49,7 @@ module.exports = function(grunt) {
         includePaths: [
           "scss",
           "node_modules/bourbon/core",
-          "node_modules/decanter/core",
+          "node_modules/decanter/core/scss",
           "node_modules"
         ],
         sourceMap: true,
