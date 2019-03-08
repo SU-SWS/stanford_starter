@@ -49,6 +49,7 @@ module.exports = function(grunt) {
         includePaths: [
           "scss",
           "node_modules/bourbon/core",
+          "node_modules/decanter/core",
           "node_modules"
         ],
         sourceMap: true,
@@ -105,7 +106,6 @@ module.exports = function(grunt) {
   });
 
   // This is where we tell Grunt we plan to use this plug-in.
-  grunt.loadNpmTasks('grunt-git');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');

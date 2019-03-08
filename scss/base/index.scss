@@ -16,3 +16,9 @@
 @import
   'config/index',
   'decanter-no-markup';
+
+.stanford-starter {
+  &::after {
+    content: 'Stanford Starter';
+  }
+}
