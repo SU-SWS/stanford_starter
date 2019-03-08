@@ -4,7 +4,7 @@ description: 'Stanford Starter Theme.'
 package: Stanford
 version: 8.x-1.0-dev
 core: 8.x
-base: stanford_basic
+base theme: stanford_basic
 libraries:
   - stanford_starter/allpages
 
