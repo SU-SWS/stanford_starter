@@ -90,13 +90,13 @@ allpages:
   version: VERSION
   css:
     base:
-      css/base/base.css: { weight: 100 }
+      dist/css/base.css: { weight: 100 }
     layout:
-      css/layout/layout.css: {}
+      dist/css/layout.css: {}
     component:
-      css/components/components.css: {}
+      dist/css/components.css: {}
     state:
-      css/states/states.css: {}
+      dist/css/state.css: {}
     theme:
-      css/theme/theme.css: {}
-      css/theme/print.css: { media: print }
+      dist/css/theme.css: {}
+      dist/css/print.css: { media: print }

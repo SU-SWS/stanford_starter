@@ -43,26 +43,23 @@ const distAssets = path.resolve(__dirname, process.env.npm_package_config_distAs
 // Start configuring webpack.
 var webpackConfig = {
   // What am i?
-  name: 'stanford_basic',
+  name: 'stanford_starter',
   // Allows for map files.
   devtool: 'source-map',
   // What build?
   entry: {
-    "base":         path.resolve(__dirname, srcSass, "base/index.scss"),
-    "base":          path.resolve(__dirname, srcJS,   "scripts.js"),
-    // "behaviors":     path.resolve(__dirname, srcJS,   "behaviors.js"),
-    // "ckeditor":      path.resolve(__dirname, srcSass, "ckeditor.scss"),
+    "base":          path.resolve(__dirname, srcSass, "base/index.scss"),
+    "scripts":       path.resolve(__dirname, srcJS,   "scripts.js"),
     "components":    path.resolve(__dirname, srcSass, "components/index.scss"),
     "layout":        path.resolve(__dirname, srcSass, "layout/index.scss"),
     "print":         path.resolve(__dirname, srcSass, "print/index.scss"),
-    // "search-page":   path.resolve(__dirname, srcSass, "pages/search/index.scss"),
-    "state":         path.resolve(__dirname, srcSass, "states/index.scss"),
+    "state":         path.resolve(__dirname, srcSass, "state/index.scss"),
     "theme":         path.resolve(__dirname, srcSass, "theme/index.scss"),
-    // "user_login":    path.resolve(__dirname, srcSass, "admin/user_login.scss"),
   },
   // Where put build?
   output: {
     filename: "[name].js",
+    // path: path.resolve(__dirname)
     path: path.resolve(__dirname, distJS)
   },
   // Relative output paths for css assets.
@@ -79,7 +76,7 @@ var webpackConfig = {
       // Drupal behaviors need special handling with webpack.
       // https://www.npmjs.com/package/drupal-behaviors-loader
       {
-        test: /\.behavior.js$/,
+        // test: /\.behavior.js$/,
         exclude: /node_modules/,
         options: {
           enableHmr: false
