@@ -22,15 +22,15 @@ const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
 // Paths ///////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-const npmPackage = 'node_modules/';
-const srcDir = path.resolve(__dirname, "src");
-const distDir = path.resolve(__dirname, "dist");
-const srcSass = path.resolve(__dirname, process.env.npm_package_config_srcSass);
-const distSass = path.resolve(__dirname, process.env.npm_package_config_distSass);
-const srcJS = path.resolve(__dirname, process.env.npm_package_config_srcJS);
-const distJS = path.resolve(__dirname, process.env.npm_package_config_distJS);
-const srcAssets = path.resolve(__dirname, process.env.npm_package_config_srcAssets);
-const distAssets = path.resolve(__dirname, process.env.npm_package_config_distAssets);
+const npmPackage =  path.resolve(__dirname, 'node_modules');
+const srcDir =      path.resolve(__dirname, "src");
+const distDir =     path.resolve(__dirname, "dist");
+const srcSass =     path.resolve(srcDir, 'scss');
+const distSass =    path.resolve(distDir, 'css');
+const srcJS =       path.resolve(srcDir, 'js');
+const distJS =      path.resolve(distDir, 'js');
+const srcAssets =   path.resolve(srcDir, 'assets');
+const distAssets =  path.resolve(distDir, 'assets');
 
 // /////////////////////////////////////////////////////////////////////////////
 // Functions ///////////////////////////////////////////////////////////////////
@@ -48,27 +48,18 @@ var webpackConfig = {
   devtool: 'source-map',
   // What build?
   entry: {
-    "base":          path.resolve(__dirname, srcSass, "base/index.scss"),
-    "scripts":       path.resolve(__dirname, srcJS,   "scripts.js"),
-    "components":    path.resolve(__dirname, srcSass, "components/index.scss"),
-    "layout":        path.resolve(__dirname, srcSass, "layout/index.scss"),
-    "print":         path.resolve(__dirname, srcSass, "print/index.scss"),
-    "state":         path.resolve(__dirname, srcSass, "state/index.scss"),
-    "theme":         path.resolve(__dirname, srcSass, "theme/index.scss"),
+    "base":          path.resolve(srcSass, "base/index.scss"),
+    "scripts":       path.resolve(srcJS,   "scripts.js"),
+    "components":    path.resolve(srcSass, "components/index.scss"),
+    "layout":        path.resolve(srcSass, "layout/index.scss"),
+    "print":         path.resolve(srcSass, "print/index.scss"),
+    "state":         path.resolve(srcSass, "state/index.scss"),
+    "theme":         path.resolve(srcSass, "theme/index.scss"),
   },
   // Where put build?
   output: {
     filename: "[name].js",
-    // path: path.resolve(__dirname)
-    path: path.resolve(__dirname, distJS)
-  },
-  // Relative output paths for css assets.
-  resolve: {
-    alias: {
-      'basic-assets': path.resolve(__dirname, 'src/assets'),
-      'decanter-assets': path.resolve(__dirname, npmPackage, 'decanter/core/src/img'),
-      'fa-fonts': path.resolve(__dirname, npmPackage, '@fortawesome/fontawesome-free/webfonts')
-    }
+    path: path.resolve(distJS)
   },
   // Additional module rules.
   module: {
@@ -120,7 +111,7 @@ var webpackConfig = {
             loader: 'sass-loader',
             options: {
               includePaths: [
-                path.resolve(__dirname, npmPackage)
+                path.resolve(npmPackage)
               ],
               sourceMap: true,
               lineNumbers: true,

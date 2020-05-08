@@ -2,14 +2,6 @@
   "name": "stanford_starter",
   "version": "1.0.0",
   "repository": "https://github.com/SU-SWS/stanford_starter",
-  "config": {
-    "srcSass": "src/scss",
-    "distSass": "dist/css",
-    "srcJS": "src/js",
-    "distJS": "dist/js",
-    "srcAssets": "src/assets",
-    "distAssets": "dist/assets"
-  },
   "scripts": {
     "build": "webpack --mode=development --display-error-details",
     "publish": "webpack --mode=production",
@@ -54,7 +46,7 @@
     "webpack-fix-style-only-entries": "^0.2",
     "webpack-manifest-plugin": "^2.2"
   },
-  "description": "= How to Use Grunt with Stanford Starter =",
+  "description": "= Stanford Starter =",
   "author": "",
   "license": "MIT",
   "dependencies": {
