@@ -1,0 +1,12 @@
+@charset 'UTF-8';
+
+//
+// Print styles.
+//
+
+// Config and supporting scss.
+@import
+  '../config/index';
+
+// First import decanter as no markup.
+@import 'decanter/core/src/scss/decanter-no-markup';
