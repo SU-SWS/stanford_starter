@@ -14,8 +14,10 @@
       background-color: $su-color-black;
     }
 
-    & svg.mailto {
-      fill: $su-color-black;
+    svg {
+      &.mailto {
+        fill: $su-color-black;
+      }
     }
 
     &:hover,
@@ -24,8 +26,10 @@
         background-color: $su-color-white;
       }
 
-      & svg.mailto {
-        fill: $su-color-white;
+      svg {
+        &.mailto {
+          fill: $su-color-white;
+        }
       }
     }
   }
