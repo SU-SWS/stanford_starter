@@ -2,7 +2,8 @@
 
 // Define button mixins here
 // Example: All mixin names should be prefaced with your abbreviation (saa, soe, ood, etc)
-@mixin example-button--gray {
+
+//@mixin example-button--gray {
   // button colors here
 
   /* don't forget to include decanter icon color overrides too;
@@ -11,5 +12,5 @@
   */
 
   // Include the correct icon color mixin inside your mixins here
-  @include example--black-icons
-}
+  //@include example--black-icons
+//}
