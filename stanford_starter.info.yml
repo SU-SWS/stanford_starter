@@ -3,7 +3,7 @@ type: theme
 description: 'Stanford Starter Theme.'
 package: Stanford
 version: 8.x-1.0-dev
-core: 8.x
+core_version_requirement: ^9
 base theme: stanford_basic
 libraries:
   - stanford_starter/allpages
