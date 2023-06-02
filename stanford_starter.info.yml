@@ -17,3 +17,6 @@ regions:
   content: Content
   footer: Footer
   page_bottom: 'Page bottom'
+
+ckeditor5-stylesheets:
+  - dist/css/ckeditor5.css
