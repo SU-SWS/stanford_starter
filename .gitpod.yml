@@ -35,34 +35,36 @@ tasks:
       echo $GITCONFIG | base64 -d > ~/.gitconfig &&
       chmod 644 ~/.gitconfig
     init: >
+      export THEME_NAME=${PWD##*/} &&
+      export PREVIEW_FULL_URL=`gp url 8001` &&
+      export PREVIEW_URL=${PREVIEW_FULL_URL#"https://"} &&
       cd /workspace &&
-#      mkdir theme &&
-#      rsync -R $GITPOD_REPO_ROOT/ theme &&
-#      rm -rf $GITPOD_REPO_ROOT/*
-#      rsync -R stack/ $GITPOD_REPO_ROOT/
-#
-#      export PREVIEW_FULL_URL=`gp url 8001` &&
-#      export PREVIEW_URL=${PREVIEW_FULL_URL#"https://"} &&
-#      export PROFILE_BRANCH=`cd ../stanford_profile && git rev-parse --abbrev-ref HEAD` &&
-#      composer require su-sws/stanford_profile:"dev-$PROFILE_BRANCH || $PROFILE_BRANCH-dev" --no-update &&
-#      composer update --no-interaction &&
-#      rm -rf docroot/*/custom/* &&
-#      composer install --prefer-source --no-interaction &&
-#      rm -rf docroot/profiles/custom/stanford_profile &&
-#      rsync -r ../stanford_profile/ docroot/profiles/custom/stanford_profile &&
-#      cp .gitpod/blt.yml blt/local.blt.yml &&
-#      mkdir -p docroot/sites/settings &&
-#      cp .gitpod/global.settings.php docroot/sites/settings/global.settings.php &&
-#      find docroot/sites/ -name 'local*' | xargs rm &&
-#      blt blt:telemetry:disable --no-interaction &&
-#      blt settings &&
-#      drush si stanford_profile -v -y
-#      drush cr
-#      drush cim -y
-#    command: |
-#      apache2ctl restart
-#      drush uli
-#      drush uli | xargs gp preview --external
-#      git config core.fileMode false
-#      blt blt:telemetry:disable --no-interaction
-#      git remote set-url origin git@github.com:SU-SWS/acsf-cardinalsites-public.git
+      mkdir theme &&
+      rsync -r $GITPOD_REPO_ROOT/ theme &&
+      find $GITPOD_REPO_ROOT -name . -o -prune -exec rm -rf -- {} + &&
+      rsync -r stack/ $GITPOD_REPO_ROOT/ &&
+      cd $GITPOD_REPO_ROOT &&
+      export PREVIEW_FULL_URL=`gp url 8001` &&
+      export PREVIEW_URL=${PREVIEW_FULL_URL#"https://"} &&
+      composer install --no-interaction &&
+      cp .gitpod/blt.yml blt/local.blt.yml &&
+      mkdir -p docroot/sites/settings &&
+      cp .gitpod/global.settings.php docroot/sites/settings/global.settings.php &&
+      find docroot/sites/ -name 'local*' | xargs rm &&
+      blt blt:telemetry:disable --no-interaction &&
+      blt settings &&
+      drush si stanford_profile -v -y &&
+      drush cr &&
+      drush cim -y &&
+      mkdir -p docroot/themes/custom &&
+      mv /workspace/theme docroot/themes/custom/$THEME_NAME &&
+      drush then $THEME_NAME &&
+      drush cset system.theme default $THEME_NAME -y
+    command: |
+      apache2ctl restart
+      drush uli
+      drush uli | xargs gp preview --external
+      git config core.fileMode false
+      blt blt:telemetry:disable --no-interaction
+      cd docroot/themes/custom/$THEME_NAME &&
+      git remote set-url origin git@github.com:SU-SWS/$THEME_NAME.git
