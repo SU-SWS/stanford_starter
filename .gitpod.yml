@@ -62,6 +62,9 @@ tasks:
       drush then $THEME_NAME &&
       drush cset system.theme default $THEME_NAME -y
     command: |
+      export THEME_NAME=${PWD##*/} &&
+      export PREVIEW_FULL_URL=`gp url 8001` &&
+      export PREVIEW_URL=${PREVIEW_FULL_URL#"https://"} &&
       apache2ctl restart
       drush uli
       drush uli | xargs gp preview --external
