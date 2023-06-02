@@ -74,4 +74,5 @@ tasks:
       git remote set-url origin git@github.com:SU-SWS/$THEME_NAME.git &&
       nvm install &&
       nvm use &&
+      yarn &&
       yarn watch
