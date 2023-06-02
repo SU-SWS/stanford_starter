@@ -51,8 +51,9 @@ tasks:
       composer install --no-interaction &&
       cp .gitpod/blt.yml blt/local.blt.yml &&
       mkdir -p docroot/sites/settings &&
-      cp .gitpod/global.settings.php docroot/sites/settings/global.settings.php &&
       find docroot/sites/ -name 'local*' | xargs rm &&
+      cp .gitpod/global.settings.php docroot/sites/settings/global.settings.php &&
+      cp .gitpod/default.local.services.yml docroot/sites/local.services.yml &&
       blt blt:telemetry:disable --no-interaction &&
       blt settings &&
       drush si stanford_profile -v -y &&
@@ -67,4 +68,7 @@ tasks:
       git config core.fileMode false
       blt blt:telemetry:disable --no-interaction
       cd docroot/themes/custom/$THEME_NAME &&
-      git remote set-url origin git@github.com:SU-SWS/$THEME_NAME.git
+      git remote set-url origin git@github.com:SU-SWS/$THEME_NAME.git &&
+      nvm install &&
+      nvm use &&
+      yarn watch
