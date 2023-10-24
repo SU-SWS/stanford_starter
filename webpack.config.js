@@ -63,7 +63,7 @@ var webpackConfig = {
       },
       {
         test: /\.(png|jpg|gif|svg)$/i,
-        type: "asset/resource"
+        type: "asset"
       }
     ]
   },
