@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
 const autoprefixer = require('autoprefixer')({ grid: true });
+const FileManagerPlugin = require('filemanager-webpack-plugin');
 
 const config = {
   isProd: process.env.NODE_ENV === "production",
@@ -71,6 +72,13 @@ var webpackConfig = {
     new FixStyleOnlyEntriesPlugin(),
     new MiniCssExtractPlugin({
       filename: '[name].css',
+    }),
+    new FileManagerPlugin({
+      events: {
+        onStart: {
+          delete: ["dist"]
+        }
+      }
     }),
   ],
   optimization: {
