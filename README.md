@@ -38,16 +38,16 @@ Developer
 If you wish to develop on this theme you will most likely need to compile some new css. Please use the sass structure provided and compile with the sass compiler packaged in this theme. To install:
 
 ```
-npm install
+yarn install
 ```
 After you've made a change you want to see processed, you can run:
 ```
-npm run build/yarn build
+yarn build
 ```
 This will process scss, js, and asset files, preparing them from the src directory to the dist directory.
 
 ```
-npm run watch/yarn watch
+yarn watch
 ```
 This will watch the scss files and compile them upon saving.
 
