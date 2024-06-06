@@ -87,7 +87,6 @@
 #       css/pattern-library/theme/print.css: { media: print }
 
 allpages:
-  version: VERSION
   css:
     theme:
       dist/css/main.css: { }
